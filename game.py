@@ -55,12 +55,6 @@ class ChessGame():
 
         self.is_moving_piece = False
 
-    def getBoardList(self):
-        board_list = list(str(self.board))
-        board_list = [piece for piece in board_list if piece !=
-                      ' ' and piece != '\n']
-        return board_list
-
     def processClick(self, click):
 
         click = list(click)
@@ -88,7 +82,7 @@ class ChessGame():
             self.is_moving_piece = False
 
         else:
-            board_list = self.getBoardList()
+            board_list = str(self.board).replace('\n', ' ').split(' ')
             if board_list[click['y'] * 8 + click['x']] != '.':
                 self.piece_moving_position = click
                 self.piece_moving_tile_color = self.table[click['x']][click['y']].get_at(
@@ -103,7 +97,7 @@ class ChessGame():
                                  (x * tile_size, y * tile_size))
 
     def renderPieces(self):
-        board_list = self.getBoardList()
+        board_list = str(self.board).replace('\n', ' ').split(' ')
 
         for y in range(8):
             for x in range(8):

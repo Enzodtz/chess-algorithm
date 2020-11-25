@@ -7,4 +7,4 @@ player = Player()
 while True:
     game.update()
     if not game.board.turn:
-        player.do_action(game)
+        player.do_action(game.board)
